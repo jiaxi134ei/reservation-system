@@ -45,6 +45,10 @@ public class SysUser {
 
     private String delFlag;
 
+    private String enable;
+
+    private String salt;
+
     public String getId() {
         return id;
     }
@@ -211,5 +215,21 @@ public class SysUser {
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag == null ? null : delFlag.trim();
+    }
+
+    public String getEnable() {
+        return enable;
+    }
+
+    public void setEnable(String enable) {
+        this.enable = enable;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }
