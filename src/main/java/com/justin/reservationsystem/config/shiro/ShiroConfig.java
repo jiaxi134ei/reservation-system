@@ -1,6 +1,8 @@
 package com.justin.reservationsystem.config.shiro;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import com.justin.reservationsystem.model.SysMenu;
+import com.justin.reservationsystem.service.IMenuService;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
@@ -19,7 +21,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.Resource;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,6 +43,8 @@ public class ShiroConfig {
 
     @Value("${spring.redis.timeout}")
     private int timeout;
+    @Resource
+    private IMenuService menuService;
 
     @Bean
     public static LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {

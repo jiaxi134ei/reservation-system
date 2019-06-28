@@ -97,7 +97,12 @@ public class ShiroRealm extends AuthorizingRealm {
             roless.add(role.getEnname());
             List<SysMenu> menus = menuService.listMenus(role.getId());
             for(SysMenu menu:menus){
-                if(!StringUtils.isEmpty(menu.getPermission())) permiss.add(menu.getPermission());
+                if(!StringUtils.isEmpty(menu.getPermission())) {
+                    String[] permissions = menu.getPermission().split(",");
+                    for(String permssion : permissions){
+                        permiss.add(permssion);
+                    }
+                }
             }
         }
         info.addRoles(roless);
