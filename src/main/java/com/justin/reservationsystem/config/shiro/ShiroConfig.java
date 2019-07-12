@@ -77,6 +77,7 @@ public class ShiroConfig {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName("md5");//散列算法:这里使用MD5算法;
         hashedCredentialsMatcher.setHashIterations(2);//散列的次数，比如散列两次，相当于 md5(md5(""));
+//        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);
         return hashedCredentialsMatcher;
     }
 
@@ -115,13 +116,17 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/static/**", "anon");    // 静态资源匿名访问
 //        filterChainDefinitionMap.put("/employees/login", "anon");// 登录匿名访问
         filterChainDefinitionMap.put("/logout", "logout");    // 用户退出，只需配置logout即可实现该功
-//        filterChainDefinitionMap.put("/css/**", "anon");
-//        filterChainDefinitionMap.put("/js/**", "anon");
-//        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/bootstrap-dist/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/email_templates/**", "anon");
+        filterChainDefinitionMap.put("/font-awesome/**", "anon");
+        filterChainDefinitionMap.put("/fontend_theme/**", "anon");
+
 //        filterChainDefinitionMap.put("/auth/login", "anon");
-//        filterChainDefinitionMap.put("/auth/logout", "logout");
-//        filterChainDefinitionMap.put("/auth/kickout", "anon");
-//        filterChainDefinitionMap.put("/**", "authc,kickout");
+
+
 
         // anon：它对应的过滤器里面是空的,什么都没做
         logger.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
@@ -132,7 +137,19 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
-
+    /**
+     *
+     * @Description: 身份认证realm;
+     * @Param:
+     * @Return:
+     * @Auther: JiaBiao
+     * @Date:  2019/6/28 0028 上午 10:47
+     */
+    @Bean(name="shiroRealm")
+    public ShiroRealm shiroRealm() {
+        ShiroRealm shiroRealm = new ShiroRealm();
+        return shiroRealm;
+    }
 
     @Bean
     public SecurityManager securityManager() {
@@ -140,25 +157,14 @@ public class ShiroConfig {
         //设置realm
         securityManager.setRealm(shiroRealm());
         //自定义缓存实现
-        securityManager.setCacheManager(cacheManager());
+//        securityManager.setCacheManager(cacheManager());
         // 自定义session管理 使用redis
-        securityManager.setSessionManager(sessionManager());
+//        securityManager.setSessionManager(sessionManager());
 
         return securityManager;
     }
     
-    /**
-     *
-     * @Description: 身份认证realm;
-     * @Param:
-     * @Return: 
-     * @Auther: JiaBiao
-     * @Date:  2019/6/28 0028 上午 10:47
-     */
-    public ShiroRealm shiroRealm() {
-        ShiroRealm shiroRealm = new ShiroRealm();
-        return shiroRealm;
-    }
+
     /**
      *
      * @Description:  cacheManager 缓存 redis实现
@@ -190,12 +196,12 @@ public class ShiroConfig {
         // redisManager.setPassword(password);
         return redisManager;
     }
-    @Bean
+    /*@Bean
     public DefaultWebSessionManager sessionManager() {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         sessionManager.setSessionDAO(redisSessionDAO());
         return sessionManager;
-    }
+    }*/
     /**
      *
      * @Description: RedisSessionDAO shiro sessionDao层的实现 通过redis
@@ -204,12 +210,12 @@ public class ShiroConfig {
      * @Auther: JiaBiao
      * @Date:  2019/6/28 0028 上午 10:58
      */
-    @Bean
+    /*@Bean
     public RedisSessionDAO redisSessionDAO(){
         RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
         redisSessionDAO.setRedisManager(redisManager());
         return redisSessionDAO;
-    }
+    }*/
 
     /**
      *

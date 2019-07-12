@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sitemesh="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <title>Cloud Admin | Dashboard</title>
+    <sitemesh:write property="head"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cloud-admin.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/themes/default.css}" id="skin-switcher" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}" />
+    <!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <!-- ANIMATE -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/animatecss/animate.min.css}" />
+    <!-- DATE RANGE PICKER -->
+    <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+    <!-- TODO -->
+    <link rel="stylesheet" type="text/css" th:href="@{/js/jquery-todo/css/styles.css}" />
+    <!-- FULL CALENDAR -->
+    <link rel="stylesheet" type="text/css" th:href="@{/js/fullcalendar/fullcalendar.min.css}" />
+    <!-- GRITTER -->
+    <link rel="stylesheet" type="text/css" th:href="@{/js/gritter/css/jquery.gritter.css}" />
+    <!-- FONTS -->
+    <!--<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'/>-->
+</head>
+
+<body>
+    <div th:replace="layout/header :: header"></div>
+    <section id="page">
+        <div th:replace="layout/menu :: menu"></div>
+        <sitemesh:write property="body"/>
+    </section>
+
+    <script th:src="@{/js/jquery/jquery-2.0.3.min.js}"></script>
+    <!-- JQUERY UI-->
+    <script th:src="@{/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js}"></script>
+    <!-- BOOTSTRAP -->
+    <script th:src="@{/bootstrap-dist/js/bootstrap.min.js}"></script>
+
+
+    <!-- DATE RANGE PICKER -->
+    <script th:src="@{/js/bootstrap-daterangepicker/moment.min.js}"></script>
+
+    <script th:src="@{/js/bootstrap-daterangepicker/daterangepicker.min.js}"></script>
+    <!-- SLIMSCROLL -->
+    <script type="text/javascript" th:src="@{/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js}"></script>
+    <!-- SLIMSCROLL -->
+    <script type="text/javascript" th:src="@{/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js}"></script>
+    <!-- BLOCK UI -->
+    <script type="text/javascript" th:src="@{/js/jQuery-BlockUI/jquery.blockUI.min.js}"></script>
+    <!-- SPARKLINES -->
+    <script type="text/javascript" th:src="@{/js/sparklines/jquery.sparkline.min.js}"></script>
+    <!-- EASY PIE CHART -->
+    <script th:src="@{/js/jquery-easing/jquery.easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easypiechart/jquery.easypiechart.min.js}"></script>
+    <!-- FLOT CHARTS -->
+    <script th:src="@{/js/flot/jquery.flot.min.js}"></script>
+    <script th:src="@{/js/flot/jquery.flot.time.min.js}"></script>
+    <script th:src="@{/js/flot/jquery.flot.selection.min.js}"></script>
+    <script th:src="@{/js/flot/jquery.flot.resize.min.js}"></script>
+    <script th:src="@{/js/flot/jquery.flot.pie.min.js}"></script>
+    <script th:src="@{/js/flot/jquery.flot.stack.min.js}"></script>
+    <script th:src="@{/js/flot/jquery.flot.crosshair.min.js}"></script>
+    <!-- TODO -->
+    <script type="text/javascript" th:src="@{/js/jquery-todo/js/paddystodolist.js}"></script>
+    <!-- TIMEAGO -->
+    <script type="text/javascript" th:src="@{/js/timeago/jquery.timeago.min.js}"></script>
+    <!-- FULL CALENDAR -->
+    <script type="text/javascript" th:src="@{/js/fullcalendar/fullcalendar.min.js}"></script>
+    <!-- COOKIE -->
+    <script type="text/javascript" th:src="@{/js/jQuery-Cookie/jquery.cookie.min.js}"></script>
+    <!-- GRITTER -->
+    <script type="text/javascript" th:src="@{/js/gritter/js/jquery.gritter.min.js}"></script>
+    <!-- CUSTOM SCRIPT -->
+    <script th:src="@{/js/script.js}"></script>
+    <script>
+        jQuery(document).ready(function() {
+            App.setPage("index");  //Set current page
+            App.init(); //Initialise plugins and elements
+            alert("ssssssssssssss");
+        });
+
+
+    </script>
+
+</body>
+</html>

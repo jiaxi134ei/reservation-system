@@ -45,6 +45,7 @@ public class LoginController {
         }
         // 执行到这里说明用户已登录成功
         return "redirect:/auth/index";
+
     }
 
     @GetMapping("/login")
@@ -63,5 +64,8 @@ public class LoginController {
         SecurityUtils.getSubject().logout();
         return "/user/login";
     }
-
+    @RequestMapping("/index")
+    public String index(){
+        return "layout/footer";
+    }
 }

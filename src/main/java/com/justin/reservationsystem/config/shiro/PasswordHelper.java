@@ -10,9 +10,9 @@ import org.apache.shiro.util.ByteSource;
  */
 public class PasswordHelper {
 
-    private String algorithName = "md5";
-    private int hashIterations = 2;
-    public String encryptPassword(SysUser user) {
+    private static String algorithName = "md5";
+    private static int hashIterations = 2;
+    public static String encryptPassword(SysUser user) {
         String encrptPsww = new SimpleHash(algorithName,user.getPassword(), ByteSource.Util.bytes(user.getSalt()),hashIterations).toHex();
         return encrptPsww;
     }
